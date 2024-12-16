@@ -21,7 +21,7 @@ function traerDatosAPI() {
                         
                </div>
                <div class="tarjeta2">
-               <img class="imgclima" src = "https://cryptogamic-instruc.000webhostapp.com/IMG/${datos[0].WeatherIcon}.png"</img>
+               <img class="imgclima" src = "https://dep0256.github.io/WEB-CC/IMG/${datos[0].WeatherIcon}.png"</img>
                </span></div>`
         })
 }
