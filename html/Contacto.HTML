@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto</title>
+  
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+  <link rel="stylesheet" href="\CSS\style.css" />
+  <script src="\JS/script.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Palanquin+Dark:400,500,600,700">
+  <!--  -->
+
+</head>
+
+<body class="kont">
+  <script>
+    window.onload = traerDatosAPI();
+  </script>
+
+  <nav class="b1">
+    <div id="b10">
+      <img src="https://cryptogamic-instruc.000webhostapp.com/IMG/logocof4.png" alt="" class="imgt" />
+    </div>
+    <div id="b11">
+      <a class="anav" href="https://cryptogamic-instruc.000webhostapp.com/html/index.html">Inicio</a>
+      <a class="anav" href="https://cryptogamic-instruc.000webhostapp.com/html/QuienesSomos.html">¿Quienes
+        Somos?</a>
+      <a class="anav" href="https://cryptogamic-instruc.000webhostapp.com/html/Galeria.html">Galería</a>
+      <a class="anav" href="https://cryptogamic-instruc.000webhostapp.com/html/Ubicacion.html">Ubicación</a>
+      <a class="anav act" href="https://cryptogamic-instruc.000webhostapp.com/html/Contacto.html">Contacto</a>
+      <div id="contenido"></div>
+
+    </div>
+
+  </nav>
+
+  <div class="b2">
+    <!-- <form id="form" class="form" action="https://formspree.io/f/mknevkno" method="POST"> -->
+    <form name="fvalida" id="form" class="form" action="https://formspree.io/f/mknevkno" method="POST">
+      <h3 class="tag"><span>CONTACTO</span></h3>
+      <label for="name">Nombre Completo <span>*</span></label>
+      <input name="name" required type="text" id="name" placeholder="Daniel">
+      <label for="email">Correo Electrónico <span>*</span></label>
+      <input name="email" type="text" id="email" required placeholder="daniel@gmail.com">
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" cols="30" rows="10" style="resize:none"></textarea>
+      <button type="submit" class="btn primary full"> Enviar Mensaje</button>
+    </form>
+  </div>
+
+  <footer class="b3">
+    <div class="b31">Coffee Shop © Todos los derechos reservados 2022</div>
+    <div class="b32">
+      <ul class="b3icon">
+        <li>
+          <a href="https://twitter.com/?lang=es"><img src=https://cdn-icons-png.flaticon.com/128/1384/1384033.png
+              width="40px" height="40px" alt="Twitter"></a>
+        </li>
+        <li>
+          <a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/128/1384/1384031.png"
+              width="40px" height="40px" alt="Instagram"></a>
+        </li>
+        <li>
+          <a href="https://facebook.com"><img src="https://cdn-icons-png.flaticon.com/128/1384/1384021.png" width="40px"
+              height="40px" alt="Facebook"></a>
+        </li>
+        <li>
+          <a href="https://github.com/grupocac22506/CC.git"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" width="40px"
+              height="40px" alt="Github"></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scrips para que no recargue la pagina al enviar formulario de contacto -->
+  <script>
+    const $form = document.querySelector('#form')
+
+    $form.addEventListener('submit', handlesubmit)
+
+    async function handlesubmit(event) {
+
+      event.preventDefault()
+
+      if (document.fvalida.name.value.length <= 5) {
+        alert("Tiene que escribir su Nombre Completo")
+        document.fvalida.name.focus()
+        return 0;
+      }
+      if (document.fvalida.email.value.length <= 5) {
+        alert("Tiene que escribir su email")
+        document.fvalida.email.focus()
+        return 0;
+      }
+      if (document.fvalida.message.value.length <= 5) {
+        alert("Tiene que escribir su mensaje para poder continuar")
+        document.fvalida.message.focus()
+        return 0;
+      }
+
+      const form = new FormData(this)
+      const response = await fetch(this.action, {
+
+        method: this.method,
+        body: form,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      if (response.ok) {
+        this.reset()
+        alert('Gracias por contactarnos, te escribiremos pronto')
+      }
+
+    }
+  </script>
+  <!-- Scrips para que no recargue la pagina al enviar formulario de contacto -->
+</body>
+
+</html>
